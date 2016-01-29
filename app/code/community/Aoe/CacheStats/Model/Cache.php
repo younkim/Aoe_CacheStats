@@ -73,6 +73,9 @@ class Aoe_CacheStats_Model_Cache extends Mage_Core_Model_Cache
     {
         $start = microtime(true) * 1000;
         $res = parent::clean($tags);
+        if (!is_array($tags)) {
+            $tags = array($tags);
+        }
         $this->appendLog(
             self::TYPE_CLEAN,
             implode(';',$tags),
